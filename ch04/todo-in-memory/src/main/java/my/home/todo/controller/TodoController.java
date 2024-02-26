@@ -72,7 +72,13 @@ public class TodoController {
         return ResponseEntity.noContent().build();
     }
 
-    @ExceptionHandler
+    @DeleteMapping("/todo")
+    public ResponseEntity<ToDo> deleteToDo(@RequestBody ToDo toDo) {
+        repository.delete(toDo);
+        return ResponseEntity.noContent().build();
+    }
+
+    @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ToDoValidationError handleException(Exception exception) {
         return new ToDoValidationError(exception.getMessage());

@@ -10,7 +10,6 @@ public class ToDoValidationErrorBuilder {
                 "Validation failed " +
                         errors.getErrorCount() + "error(s)"
         );
-
         for (ObjectError objectError : errors.getAllErrors()) {
             error.addValidationErrors(objectError.getDefaultMessage());
         }
