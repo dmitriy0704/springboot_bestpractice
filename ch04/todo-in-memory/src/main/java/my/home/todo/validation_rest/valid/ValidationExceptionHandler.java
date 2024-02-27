@@ -14,7 +14,7 @@ import java.util.Map;
 
 @ControllerAdvice
 public class ValidationExceptionHandler {
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler({Exception.class, MethodArgumentNotValidException.class})
     public ResponseEntity<?> notValid(
             MethodArgumentNotValidException ex, HttpServletRequest request) {
         List<String> errors = new ArrayList<>();
