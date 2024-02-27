@@ -1,6 +1,7 @@
 package my.home.todo.domain;
 
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -13,7 +14,8 @@ public class ToDo {
     @NotNull
     private String id;
 
-    @NotNull
+    @Valid
+    @NotNull(message = "поле description должно быть заполнено")
     @NotBlank
     private String description;
 
