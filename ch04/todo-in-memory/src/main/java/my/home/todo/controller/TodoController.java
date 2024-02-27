@@ -37,26 +37,30 @@ public class TodoController {
         return ResponseEntity.ok(repository.findById(id));
     }
 
-    @PostMapping("/todo/{id}")
-    public ResponseEntity<ToDo> setCompleted(@PathVariable String id) {
-        ToDo result = repository.findById(id);
-        result.setCompleted(true);
-        repository.save(result);
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .buildAndExpand(result.getId()).toUri();
-        return ResponseEntity.ok()
-                .header("Location", location.toString())
-                .build();
-    }
+//    @PostMapping("/todo/{id}")
+//    public ResponseEntity<ToDo> setCompleted(@PathVariable String id) {
+//        ToDo result = repository.findById(id);
+//        result.setCompleted(true);
+//        repository.save(result);
+//        URI location = ServletUriComponentsBuilder
+//                .fromCurrentRequest()
+//                .buildAndExpand(result.getId()).toUri();
+//        return ResponseEntity.ok()
+//                .header("Location", location.toString())
+//                .build();
+//    }
 
-    @RequestMapping(value = "/todo",
-            method = {RequestMethod.POST, RequestMethod.PUT}
-    )
+    @PostMapping(value = "/todo")
     public ResponseEntity<?> createToDo(@Valid @RequestBody ToDo toDo, Errors errors) {
+        System.out.println("create todo");
+        System.out.println(toDo);
         if (errors.hasErrors()) {
-            ResponseEntity.badRequest()
-                    .body(ToDoValidationErrorBuilder.fromBindingErrors(errors));
+            System.out.println("error");
+            ResponseEntity
+                    .badRequest()
+                    .body(
+                            ToDoValidationErrorBuilder.fromBindingErrors(errors)
+                    );
         }
         ToDo result = repository.save(toDo);
         URI location = ServletUriComponentsBuilder
@@ -78,7 +82,7 @@ public class TodoController {
         return ResponseEntity.noContent().build();
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(Error.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ToDoValidationError handleException(Exception exception) {
         return new ToDoValidationError(exception.getMessage());

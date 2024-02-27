@@ -1,8 +1,6 @@
-package my.home.todo.controller;
+package my.home.todo.validation_rest;
 
 import lombok.extern.slf4j.Slf4j;
-import my.home.todo.domain.ErrorMessage;
-import my.home.todo.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

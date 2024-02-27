@@ -1,4 +1,4 @@
-package my.home.todo.domain;
+package my.home.todo.validation_rest;
 
 
 import lombok.AllArgsConstructor;

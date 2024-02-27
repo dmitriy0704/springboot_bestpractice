@@ -1,6 +1,5 @@
 package my.home.todo.validation;
 
-import org.springframework.boot.autoconfigure.integration.IntegrationProperties;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
 

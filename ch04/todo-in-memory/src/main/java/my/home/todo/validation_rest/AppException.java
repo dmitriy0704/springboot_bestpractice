@@ -1,4 +1,4 @@
-package my.home.todo.exception;
+package my.home.todo.validation_rest;
 
 public class AppException extends RuntimeException {
 

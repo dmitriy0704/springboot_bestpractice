@@ -1,7 +1,7 @@
-package my.home.todo.service;
+package my.home.todo.validation_rest;
 
-import my.home.todo.domain.Person;
-import my.home.todo.exception.NotFoundException;
+import my.home.todo.validation_rest.Person;
+import my.home.todo.validation_rest.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import lombok.NonNull;
