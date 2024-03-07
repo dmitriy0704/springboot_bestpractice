@@ -4,18 +4,18 @@ package my.home.reactor.example.domian;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.MonoProcessor;
 import reactor.core.scheduler.Schedulers;
-
 import java.time.Duration;
-
 
 @Configuration
 public class MonoExample {
     static private Logger LOG = LoggerFactory.getLogger(MonoExample.class);
 
+    @Bean
     public CommandLineRunner runMonoExample() {
         return args -> {
             MonoProcessor<ToDo> promise = MonoProcessor.create();
