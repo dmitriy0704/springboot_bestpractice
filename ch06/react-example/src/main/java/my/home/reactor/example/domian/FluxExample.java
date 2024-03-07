@@ -20,20 +20,16 @@ public class FluxExample {
     public CommandLineRunner runFluxExample(){
         return args -> {
             EmitterProcessor<ToDo> stream = EmitterProcessor.create();
-
             Flux<List<ToDo>> promise = stream
                     .filter(ToDo::isCompleted)
                     .doOnNext(s -> LOG.info("FLUX >>> ToDo: {}", s.getDescription()))
                     .collectList().flux()
                     .subscribeOn(Schedulers.single());
-
-
             stream.onNext(new ToDo("Read a book", true));
             stream.onNext(new ToDo("Listen classical music a book", true));
+            stream.onNext(new ToDo("Listen music"));
             stream.onComplete();
             promise.blockFirst();
-
         };
     }
-
 }
